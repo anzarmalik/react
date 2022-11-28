@@ -15,6 +15,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       lat: null,
+      errorMessage: ''
     };
 
     window.navigator.geolocation.getCurrentPosition(
@@ -22,12 +23,17 @@ class App extends React.Component {
         console.log(position);
         this.setState({ lat: position.coords.latitude });
       },
-      (err) => { console.log(err) }
+      (err) => {
+        console.log(err);
+        this.setState({ errorMessage: err.message });
+      }
     );
   }
 
   render() {
-    return <div> Hi There i am in Latitude {this.state.lat}</div>;
+    return (<div> Hi There i am in Latitude {this.state.lat}
+      <br /> Error : {this.state.errorMessage} </div>
+    );
   }
 }
 
