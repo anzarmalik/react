@@ -11,8 +11,10 @@ const getSeason = (lat, month)=>{
 
 const SeasonDisplay = (props) => {
     console.log("🚀 ~ file: seasonDisplay.js:4 ~ SeasonDisplay ~ props", props)
-    return (<div> Hi There i am in Latitude {props.detailObj.lat} and season is {getSeason(props.detailObj.lat,new Date().getMonth())}
-        <br /> Error : {props.detailObj.error} </div>);
+    const seasonDetails = getSeason(props.detailObj.lat,new Date().getMonth());
+    return (<div> Hi There i am in Latitude {props.detailObj.lat} and season is {seasonDetails}
+       <br /> {seasonDetails ==='winter'? 'its chillin cold ':'it hot outside '}
+       <br /> Error : {props.detailObj.error} </div>);
 }
 
 export default SeasonDisplay
