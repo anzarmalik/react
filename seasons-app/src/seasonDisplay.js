@@ -14,9 +14,11 @@ const SeasonDisplay = (props) => {
   console.log("🚀 ~ file: seasonDisplay.js:4 ~ SeasonDisplay ~ props", props)
   const seasonDetails = getSeason(props.detailObj.lat, new Date().getMonth());
   const error = props.detailObj.error ? `Error : ${props.detailObj.error}` : ``;
+  const iconDetail = seasonDetails === 'winter' ? `snowflake` : `sun`;
   return (<div> Hi There i am in Latitude {props.detailObj.lat} , month number is {new Date().getMonth() + 1} and season is {seasonDetails}
     <br /> <h1>{seasonDetails === 'winter' ? 'its chillin cold ' : 'its hot outside '}</h1>
-    <br /> {error} </div>);
+    <br /> {error}
+    <br /> <i className={`${iconDetail} icon`} /></div>);
 }
 
 export default SeasonDisplay
