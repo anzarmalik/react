@@ -31,10 +31,13 @@ const SeasonDisplay = (props) => {
   console.log("🚀 ~ file: seasonDisplay.js:26 ~ SeasonDisplay ~ seasonDetails", seasonDetails)
   const error = props.detailObj.error ? `Error : ${props.detailObj.error}` : ``;
   const { text, iconName } = seasonConfig[seasonDetails];
-  return (<div> Hi There i am in Latitude {props.detailObj.lat} , month number is {new Date().getMonth() + 1} and season is {seasonDetails}
+  return (
+    <div className={`seasonDisplay ${seasonDetails}`}> Hi There i am in Latitude {props.detailObj.lat} , month number is {new Date().getMonth() + 1} and season is {seasonDetails}
     <br /> <h1>{text}</h1>
     <br /> {error}
-    <br /> <i className={`icon_right massive ${iconName} icon`} /></div>);
+    <br /> <i className={`icon_right massive ${iconName} icon`} />
+    </div>
+    );
 }
 
 export default SeasonDisplay
