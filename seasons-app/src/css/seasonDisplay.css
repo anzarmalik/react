@@ -7,3 +7,14 @@
 .summer{
     background-color: rgb(141, 16, 16);
 }
+
+.winter{
+    background-color: rgb(184, 167, 167);
+}
+
+.seasonDisplay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
