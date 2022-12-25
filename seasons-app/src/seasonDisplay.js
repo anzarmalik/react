@@ -1,7 +1,7 @@
 import React from 'react';
 
 const getSeason = (lat, month) => {
-  if (!lat) { return ' not known ' };
+  if (!lat) { return 'not_known' };
   if (month > 2 || month < 9) {
     return lat > 0 ? 'summer' : 'winter';
   } else {
@@ -9,16 +9,31 @@ const getSeason = (lat, month) => {
   }
 }
 
+const seasonConfig = {
+  summer: {
+    text: 'its chillin cold ',
+    iconName: 'snowflake'
+  },
+  winter: {
+    text: 'its hot outside ',
+    iconName: 'sun'
+  },
+  not_known: {
+    text: ' not known ',
+    iconName: 'sun'
+  }
+};
 
 const SeasonDisplay = (props) => {
   console.log("🚀 ~ file: seasonDisplay.js:4 ~ SeasonDisplay ~ props", props)
   const seasonDetails = getSeason(props.detailObj.lat, new Date().getMonth());
+  console.log("🚀 ~ file: seasonDisplay.js:26 ~ SeasonDisplay ~ seasonDetails", seasonDetails)
   const error = props.detailObj.error ? `Error : ${props.detailObj.error}` : ``;
-  const iconDetail = seasonDetails === 'winter' ? `snowflake` : `sun`;
+  const { text, iconName } = seasonConfig[seasonDetails];
   return (<div> Hi There i am in Latitude {props.detailObj.lat} , month number is {new Date().getMonth() + 1} and season is {seasonDetails}
-    <br /> <h1>{seasonDetails === 'winter' ? 'its chillin cold ' : 'its hot outside '}</h1>
+    <br /> <h1>{text}</h1>
     <br /> {error}
-    <br /> <i className={`${iconDetail} icon`} /></div>);
+    <br /> <i className={`${iconName} icon`} /></div>);
 }
 
 export default SeasonDisplay
