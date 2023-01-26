@@ -5,8 +5,9 @@ class SearchBar extends React.Component {
      console.log(event.target.value);
     };
 
-    onInputSubmit(event){
+    onInputSubmit = (event) =>{
         event.preventDefault();
+        console.log('value : ',this.state.term)
     };
 
     state ={term:''}
