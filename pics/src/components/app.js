@@ -8,7 +8,7 @@ import axios from 'axios'
 class App extends React.Component {
     onSearchSubmit(term) {
         console.log('term :', term);
-        axios.get('https://api.unsplash.com/',{
+        axios.get('https://api.unsplash.com/search/photos',{
             params: {query: term},
             headers: {
                 Authorization : 'Client-ID Cwo8L2PBpDWDs2CPIc6TRX9q0HLxk7s3sKV1gmakvDo'
