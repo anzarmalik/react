@@ -6,7 +6,7 @@ const ImageList = (props) => {
     const imageTags = props.images.map(({description , id , urls}) => {
         return <img alt={description} key={id} src={urls.regular} />
     });
-    return (<div className="image-list">{imageTags}</div>)
+    return (<div className="imageList">{imageTags}</div>)
 }
 
 export default ImageList;
