@@ -8,12 +8,13 @@ const [ activeIndex, setActiveIndex ] = useState(null);
     };
 
     const itemsList = items.map((item,index) => {
+        const active = index === activeIndex ? 'active':'' ;
         return (<React.Fragment key={item.title}>
-            <div className="title active"  onClick ={()=>{itemClick(index)}} >
+            <div className={`title ${active}`}  onClick ={()=>{itemClick(index)}} >
              <i className="dropdown icon"></i>
              {item.title}
             </div>
-            <div className="content active">
+            <div className={`content ${active}`}>
             <p> {item.content}</p>
             </div>
             </React.Fragment>)
