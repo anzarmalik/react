@@ -1,27 +1,29 @@
-import  React from "react";
+import React from "react";
+import Search from "./components/search";
 import Accordion from './components/Accordion'
 
-const items =[
+const items = [
     {
-        title:'What is React',
+        title: 'What is React',
         content: 'react is a front-end  library'
     },
     {
-        title:'Why use react',
+        title: 'Why use react',
         content: 'bcoz its awesome '
     },
     {
-        title:'How to use it ',
+        title: 'How to use it ',
         content: 'even i dont know yet!'
     }
 ]
 
 
 
-const  App = ()=>{
+const App = () => {
     return (<div>
-    <Accordion items={items}/>
-    </div>); 
+        <Search />
+        {/* <Accordion items={items}/> */}
+    </div>);
 };
 
 
