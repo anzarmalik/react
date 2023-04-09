@@ -2,6 +2,7 @@ import React , { useState } from "react";
 // import Search from "./components/search";
 // import Accordion from './components/Accordion'
 import Dropdown from "./components/dropDown";
+import Translate from "./components/translate";
 
 const items = [
     {
@@ -36,13 +37,15 @@ const colorList = [
 
 
 const App = () => {
-    const [selected, setSelection] = useState(colorList[0]);
+    // const [selected, setSelection] = useState(colorList[0]);
 
-    return (<div>
-        {/* <Search /> */}
-        {/* <Accordion items={items}/> */}
-        <Dropdown  selected={selected}  setSelection={setSelection} colorList={colorList} />
-    </div>);
+    // return (<div>
+    //     {/* <Search /> */}
+    //     {/* <Accordion items={items}/> */}
+    //     <Dropdown   label={"color"}  selected={selected}  setSelection={setSelection} options={colorList} />
+    // </div>);
+
+    return(<div><Translate/></div>)
 };
 
 

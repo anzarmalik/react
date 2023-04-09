@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useRef} from "react";
 
-const Dropdown = ({ colorList , selected , setSelection }) => {
+const Dropdown = ({ label, options , selected , setSelection }) => {
     const [open,setOpen] = useState(false);
     const ref = useRef();
  useEffect(() => {
@@ -15,7 +15,7 @@ return;
 
 
 
-    const renderColorList = colorList.map(color => {
+    const renderColorList = options.map(color => {
         if(color.label === selected.label){
             return null;
         }
@@ -28,7 +28,7 @@ return;
     console.log("🚀 ~ file: dropDown.js:11 ~ renderColorList ~ renderColorList:", renderColorList)
     return (<div ref={ref} className="ui form" >
         <div className="field" >
-            <label className="label" >Select a color</label>
+            <label className="label" >Select a {label}</label>
             <div  onClick={()=>{setOpen(!open)}} className={`ui selection dropdown ${open? "visible active": ""}`}>
                 <i className="dropdown icon"></i>
                 <div className="text" > {selected.label} </div>
