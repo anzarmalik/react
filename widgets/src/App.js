@@ -1,8 +1,10 @@
-import React , { useState } from "react";
-// import Search from "./components/search";
-// import Accordion from './components/Accordion'
+import React, { useState } from "react";
+import Search from "./components/search";
+import Accordion from './components/Accordion'
 import Dropdown from "./components/dropDown";
 import Translate from "./components/translate";
+import Route from "./components/route";
+
 
 const items = [
     {
@@ -37,15 +39,23 @@ const colorList = [
 
 
 const App = () => {
-    // const [selected, setSelection] = useState(colorList[0]);
+    const [selected, setSelection] = useState(colorList[0]);
 
     // return (<div>
     //     {/* <Search /> */}
     //     {/* <Accordion items={items}/> */}
     //     <Dropdown   label={"color"}  selected={selected}  setSelection={setSelection} options={colorList} />
     // </div>);
+    // return(<div><Translate/></div>)
 
-    return(<div><Translate/></div>)
+    return (
+        <div>
+            <Route path="/"> <Accordion items={items} /> </Route>
+            <Route path="/list"> <Search /> </Route>
+            <Route path="/dropdown"><Dropdown label={"color"} selected={selected} setSelection={setSelection} options={colorList} /></Route>
+            <Route path="/translate"><Translate /></Route>
+        </div>
+    )
 };
 
 
