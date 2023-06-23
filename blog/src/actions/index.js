@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import jsonPlaceHolder from "../apis/jsonPlaceHolder";
 
 export const fetchPosts = () => async dispatch => {
@@ -8,10 +10,19 @@ export const fetchPosts = () => async dispatch => {
     });
 }
 
-export const fetchUser = (id) => async dispatch => {
+// export const fetchUser = (id) => async dispatch => {
+//     const response = await jsonPlaceHolder.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+//     return dispatch({
+//         type: "FETCH_USER",
+//         payload: response.data,
+//     });
+// }
+
+export const fetchUser = (id) => async dispatch => _fetchUser(id, dispatch);
+const _fetchUser = _.memoize(async (id, dispatch) => {
     const response = await jsonPlaceHolder.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-    return dispatch({
+    dispatch({
         type: "FETCH_USER",
         payload: response.data,
     });
-}
+});
