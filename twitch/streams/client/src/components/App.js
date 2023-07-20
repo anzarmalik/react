@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" exact element={<StreamList />} />
           <Route path="/streams/new" exact element={<StreamCreate />} />
