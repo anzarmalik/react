@@ -6,30 +6,51 @@ class GoogleAuth extends React.Component {
     componentDidMount() {
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
-                clientId: '',
+                clientId: '...',
                 scope: 'email',
-                plugin_name: 'App Name that you used in google developer console API'
+                plugin_name: 'Web client 1 twitch'
             }).then(() => {
                 this.auth = window.gapi.auth2.getAuthInstance();
                 this.setState({
                     isSignedIn: this.auth.isSignedIn.get()
                 });
+                this.auth.isSignedIn.listen(this.onAuthChange);
             })
         })
     }
 
+    onAuthChange= ()=>{
+        this.setState({
+            isSignedIn: this.auth.isSignedIn.get()
+        });
+    }
+
+    onSignIn = () =>{
+        window.gapi.auth2.getAuthInstance().signIn();
+    }
+
+    onSignOut = () =>{
+        window.gapi.auth2.getAuthInstance().signOut();
+    }
+
     oAuthButtonText() {
         if (this.state.isSignedIn === null) {
-            return "status not known! "
+            return null
         } else if (this.state.isSignedIn) {
-            return "signed In! "
+            return <button className='ui button google red'  onClick={this.onSignOut} >
+                <i  className='google icon' />
+                Sign Out
+            </button>
         } else {
-            return "signed out"
+            return <button className='ui button google red'   onClick={this.onSignIn} >
+                <i  className='google icon' />
+                Sign In with Google
+            </button>
         }
     }
 
     render() {
-        return <div>Google Auth {this.oAuthButtonText()}</div>
+        return <div>{this.oAuthButtonText()}</div>
     }
 }
 
