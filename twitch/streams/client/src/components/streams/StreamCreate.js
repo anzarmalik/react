@@ -6,8 +6,6 @@ import { createStream } from "../../actions";
 class StreamCreate extends React.Component {
 
     renderError = ({ error, touched }) => {
-        console.log("🚀 ~ file: StreamCreate.js:7 ~ StreamCreate ~ touched:", touched)
-        console.log("🚀 ~ file: StreamCreate.js:7 ~ StreamCreate ~ error:", error)
         if (error && touched) {
             return (
                 <div className="ui error message" >
@@ -31,7 +29,6 @@ class StreamCreate extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        console.log("🚀 ~ file: StreamCreate.js:16 ~ StreamCreate ~ formValues:", formValues);
         this.props.createStream(formValues);
     }
 
