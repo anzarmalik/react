@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchStreams } from '../../actions/index'
 import { connect } from "react-redux";
+import {Link} from "react-router-dom"
 
 class StreamList extends React.Component {
     componentDidMount() {
@@ -10,6 +11,16 @@ class StreamList extends React.Component {
     renderEditUpdate(stream) {
         if (stream.userId === this.props.currentUserId) {
             return <div>Add/Edit</div>
+        }
+    }
+
+    renderCreate() {
+        if (this.props.isSignedIn) {
+            return (<div style={{textAlign: "right"}}>
+                <Link to="/streams/new" className="ui button primary">
+                Create Stream
+                </Link>
+            </div>)
         }
     }
 
@@ -30,6 +41,7 @@ class StreamList extends React.Component {
 
     render() {
         return (<div>
+            {this.renderCreate()}
             <h2>
                 All Streams
             </h2>
@@ -44,7 +56,8 @@ class StreamList extends React.Component {
 const mapStateToProps = (state) => {
     return {
         streams: Object.values(state.streams),
-        currentUserId: state.auth.userId
+        currentUserId: state.auth.userId,
+        isSignedIn: state.auth.isSignedIn,
     }
 }
 
