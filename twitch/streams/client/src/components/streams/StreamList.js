@@ -24,11 +24,24 @@ class StreamList extends React.Component {
         }
     }
 
+    renderAdmin(stream) {
+        if (stream.userId === this.props.currentUserId) {
+            return (
+            <div className="right floated content" >
+            <Link to={`streams/edit/${stream.id}`} className="ui button primary" >Edit</Link>
+            <button className="ui button primary" >Delete</button>
+            </div>
+
+            )
+        }
+    }
+
     renderList() {
         return this.props.streams.map(stream => {
             return (
                 <div className="item" key={stream.id} >
                     <i className="large middle icon aligned camera " ></i>
+                    {this.renderAdmin(stream)}
                     <div className="content" >
                         {stream.title}
                         <div className="description">{stream.description}</div>
